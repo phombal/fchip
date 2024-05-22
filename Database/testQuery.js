@@ -22,4 +22,25 @@ async function getFirstFiveItems() {
     }
 }
 
-getFirstFiveItems();
+// getFirstFiveItems();
+
+
+async function getItemsByCityName(cityName) {
+    try {
+        await client.connect();
+        console.log('Connected to database');
+        const database = client.db('FCHIP_database'); // Replace with your database name
+        const collection = database.collection('Provider_Directory'); // Replace with your collection name
+
+        const query = { "Section.County.City.Group.CityName" : cityName};
+        const firstFiveItems = await collection.find(query).limit(5).toArray();
+        console.log('First 5 Items with CityName "Avenal":', firstFiveItems);
+    } catch (error) {
+        console.error('Error retrieving items:', error);
+    } finally {
+        await client.close();
+    }
+}
+
+getItemsByCityName("Avenal");
+
