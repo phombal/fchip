@@ -1,21 +1,8 @@
-// src/map_page/ProviderMap.js
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import mapboxgl from 'mapbox-gl';
-import ProviderCard from '../components/ProviderCard';
+import ProviderCard from './providercard';
 
 const ProviderMap = () => {
-    useEffect(() => {
-        mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
-        new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [-119.4179, 36.7378], // Example coordinates for Fresno, CA
-            zoom: 10
-        });
-    }, []);
-
     const providers = [
         {
             name: 'Dr. Sally Smith',
@@ -48,7 +35,10 @@ const ProviderMap = () => {
                     </div>
                 </Col>
                 <Col lg={8} md={6}>
-                    <div id="map" style={{ width: '100%', height: '500px' }}></div>
+                    {/* Placeholder for where the map would be */}
+                    <div id="map-placeholder" style={{ width: '100%', height: '500px', backgroundColor: '#e0e0e0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <h3>Map Placeholder</h3>
+                    </div>
                 </Col>
             </Row>
         </Container>
