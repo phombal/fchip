@@ -5,11 +5,11 @@ function NavigationBar() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">FCHIP</Navbar.Brand>
+        <Navbar.Brand href="#home" >FCHIP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <a href="https://fchip.org" target="_blank" rel="noopener noreferrer" className='nav-link'>Home</a>
             <Nav.Link href="#pharmacy-search">Pharmacy Search</Nav.Link>
             <Nav.Link href="#provider-search">Provider Search</Nav.Link>
           </Nav>
