@@ -11,7 +11,7 @@ function DistanceFilterDropdown() {
 
     return (
         <Dropdown onSelect={handleSelect}>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="danger" id="dropdown-basic">
                 {distance}
             </Dropdown.Toggle>
 
@@ -26,12 +26,39 @@ function DistanceFilterDropdown() {
     );
 }
 
+function LanguageFilterDropdown() {
+    const [language, setLanguage] = useState('Select language');
+
+    const handleSelect = (eventKey) => {
+        setLanguage(eventKey);
+        console.log("Filtering items by language:", eventKey);
+    };
+
+    return (
+        <Dropdown onSelect={handleSelect}>
+            <Dropdown.Toggle variant="danger" id="dropdown-basic">
+                {language}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+                <Dropdown.Item eventKey="English">English</Dropdown.Item>
+                <Dropdown.Item eventKey="Spanish">Spanish</Dropdown.Item>
+                <Dropdown.Item eventKey="Hmong">Hmong</Dropdown.Item>
+                <Dropdown.Item eventKey="Punjabi">Punjabi</Dropdown.Item>
+                <Dropdown.Item eventKey="Tagalog">Tagalog</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
+    );
+}
+
 function FullWidthTextInput() {
     return (
         <Form>
-            <Form.Group controlId="fullWidthTextInput">
-                <Form.Label>Location</Form.Label>
-                <Form.Control type="text" placeholder="Enter location" size="sm" />
+            <Form.Group as={Row} controlId="fullWidthTextInput" className="align-items-center">
+                <Form.Label column sm="auto" className="pr-2">My Location:</Form.Label>
+                <Col>
+                    <Form.Control type="text" placeholder="Enter location" size="sm" />
+                </Col>
             </Form.Group>
         </Form>
     );
@@ -39,12 +66,15 @@ function FullWidthTextInput() {
 
 function CombinedComponents() {
     return (
-        <Container>
+        <Container style={{ padding: '10px 0' }}>
             <Row className="align-items-center">
-                <Col md={4}>
+                <Col md={3} style={{ padding: '10px 0' }}>
                     <DistanceFilterDropdown />
                 </Col>
-                <Col md={8}>
+                <Col md={3} style={{ padding: '10px 0' }}>
+                    <LanguageFilterDropdown />
+                </Col>
+                <Col md={6} style={{ padding: '10px 0' }}>
                     <FullWidthTextInput />
                 </Col>
             </Row>
