@@ -11,7 +11,6 @@ function App() {
     <div>
       <NavigationBar />
       <CombinedComponents />
-      <ProviderCard />
       <ProviderMap />
     </div>
   );

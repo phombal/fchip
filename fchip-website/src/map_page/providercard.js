@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-const ProviderCard = ({ name, distance, rating, reviews }) => {
+const ProviderCard = ({ name, distance, languages, specialty }) => {
     return (
         <Card style={{ marginBottom: '1rem' }}>
             <Card.Body style={{ display: 'flex', alignItems: 'center' }}>
@@ -10,9 +9,10 @@ const ProviderCard = ({ name, distance, rating, reviews }) => {
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{distance} mi</Card.Text>
-                    <Card.Text>⭐ {rating} ({reviews} Reviews)</Card.Text>
+                    <Card.Text>Languages Spoken: {languages}</Card.Text>
+                    <Card.Text>Specialty: {specialty}</Card.Text>
                 </div>
-                <Button variant="primary">Make Appointment</Button>
+                <Button variant="danger">Get Directions</Button>
             </Card.Body>
         </Card>
     );
