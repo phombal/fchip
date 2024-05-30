@@ -18,10 +18,17 @@
         "directions": "Get directions"
     },
     "text_input": {
-        "my_loc": "My location",
-        "ent_loc": "Enter location"
+        "my_loc": "Patient location",
+        "ent_loc": "Enter patient location"
     },
     "distance": {
         "select": "Select distance"
+    },
+    "mode": {
+        "select": "Select mode of transportation",
+        "walking": "Walking",
+        "bicycling": "Bicycling",
+        "transit": "Transit",
+        "driving": "Driving"
     }
   }

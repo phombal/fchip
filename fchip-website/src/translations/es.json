@@ -23,5 +23,12 @@
     },
     "distance": {
         "select": "Elige la distancia"
+    },
+    "mode": {
+        "select": "Seleccione modo de transporte",
+        "walking": "Caminando",
+        "bicycling": "Montar en bicicleta",
+        "transit": "Tránsito",
+        "driving": "Conduciendo"
     }
   }

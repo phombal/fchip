@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import ProviderCard from './providercard'; // Adjust the import path if needed
+import Home from './Home';
 
 const ProviderMap = () => {
     const providers = [
@@ -87,10 +88,7 @@ const ProviderMap = () => {
                     </Pagination>
                 </Col>
                 <Col lg={8} md={6}>
-                    {/* Placeholder for where the map would be */}
-                    <div id="map-placeholder" style={{ width: '100%', height: '500px', backgroundColor: '#e0e0e0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <h3>Map Placeholder</h3>
-                    </div>
+                    <Home />
                 </Col>
             </Row>
         </Container>
