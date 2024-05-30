@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Dropdown, Form, Container, Row, Col } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function DistanceFilterDropdown() {
+    const { t } = useTranslation();
     const [distance, setDistance] = useState('Select distance');
 
     const handleSelect = (eventKey) => {
@@ -12,7 +14,7 @@ function DistanceFilterDropdown() {
     return (
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                {distance}
+            {t('distance.select')}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -27,8 +29,9 @@ function DistanceFilterDropdown() {
 }
 
 function LanguageFilterDropdown() {
-    const [language, setLanguage] = useState('Select language');
-
+    const { t, i18n } = useTranslation();
+    const [language, setLanguage] = useState(t('language.select'));
+  
     const handleSelect = (eventKey) => {
         setLanguage(eventKey);
         console.log("Filtering items by language:", eventKey);
@@ -37,27 +40,28 @@ function LanguageFilterDropdown() {
     return (
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                {language}
+                {t('language.select')}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-                <Dropdown.Item eventKey="English">English</Dropdown.Item>
-                <Dropdown.Item eventKey="Spanish">Spanish</Dropdown.Item>
-                <Dropdown.Item eventKey="Hmong">Hmong</Dropdown.Item>
-                <Dropdown.Item eventKey="Punjabi">Punjabi</Dropdown.Item>
-                <Dropdown.Item eventKey="Tagalog">Tagalog</Dropdown.Item>
+                <Dropdown.Item eventKey="English">{t('language.english')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Spanish">{t('language.spanish')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Hmong">{t('language.hmong')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Punjabi">{t('language.punjabi')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Tagalog">{t('language.tagalog')}</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );
 }
 
 function FullWidthTextInput() {
+    const { t } = useTranslation(); // Hook to access translation function
     return (
         <Form>
             <Form.Group as={Row} controlId="fullWidthTextInput" className="align-items-center">
-                <Form.Label column sm="auto" className="pr-2">My Location:</Form.Label>
+                <Form.Label column sm="auto" className="pr-2">{t('text_input.my_loc')}:</Form.Label>
                 <Col>
-                    <Form.Control type="text" placeholder="Enter location" size="sm" />
+                    <Form.Control type="text" placeholder={t('text_input.ent_loc')} size="sm" />
                 </Col>
             </Form.Group>
         </Form>
@@ -74,12 +78,37 @@ function CombinedComponents() {
                 <Col md={3} style={{ padding: '10px 0' }}>
                     <LanguageFilterDropdown />
                 </Col>
-                <Col md={6} style={{ padding: '10px 0' }}>
+                <Col md={3} style={{ padding: '10px 0' }}>
                     <FullWidthTextInput />
+                </Col>
+                <Col md={3} style={{ padding: '10px 0' }}>
+                    <LanguageSelector />
                 </Col>
             </Row>
         </Container>
     );
 }
+
+function LanguageSelector() {
+    const { t, i18n } = useTranslation();
+  
+    const changeLanguage = (language) => {
+      i18n.changeLanguage(language);
+    };
+  
+    return (
+      <Dropdown onSelect={changeLanguage}>
+        <Dropdown.Toggle variant="danger" id="dropdown-basic">
+          {i18n.language.toUpperCase()}
+        </Dropdown.Toggle>
+  
+        <Dropdown.Menu>
+          <Dropdown.Item eventKey="en">{t('language.english')}</Dropdown.Item>
+          <Dropdown.Item eventKey="es">{t('language.spanish')}</Dropdown.Item>
+          {/* Add dropdown items for other languages */}
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+  }
 
 export { CombinedComponents };

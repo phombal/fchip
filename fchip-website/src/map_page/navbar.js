@@ -1,7 +1,9 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 function NavigationBar() {
+  const { t } = useTranslation(); // Hook to access translation function
   return (
     <Navbar bg="danger" variant="danger" expand="lg">
       <Container>
@@ -9,9 +11,9 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className="text-white">Home</Nav.Link>
-            <Nav.Link href="#pharmacy-search" className="text-white">Pharmacy Search</Nav.Link>
-            <Nav.Link href="#provider-search" className="text-white">Provider Search</Nav.Link>
+            <Nav.Link href="#home" className="text-white">{t('nav_bar.home')}</Nav.Link>
+            <Nav.Link href="#pharmacy-search" className="text-white">{t('nav_bar.pharmacy')}</Nav.Link>
+            <Nav.Link href="#provider-search" className="text-white">{t('nav_bar.provider')}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

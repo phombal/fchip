@@ -1,0 +1,27 @@
+{
+    "language": {
+      "select": "Seleccione el idioma",
+      "english": "Inglés",
+      "spanish": "Español",
+      "hmong": "Hmong",
+      "punjabi": "Punjabí",
+      "tagalog": "Tagalo"
+    },
+    "nav_bar": {
+        "pharmacy": "Búsqueda de farmacias",
+        "provider": "Búsqueda de proveedores",
+        "home": "Home"
+    },
+    "prov_card":{
+        "languages": "Idiomas hablados",
+        "specialty": "Especialidad",
+        "directions": "Obtener las direcciones"
+    },
+    "text_input": {
+        "my_loc": "Mi ubicacion",
+        "ent_loc": "Poner en ubicación"
+    },
+    "distance": {
+        "select": "Elige la distancia"
+    }
+  }
