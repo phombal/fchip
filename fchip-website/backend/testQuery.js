@@ -14,15 +14,13 @@ async function getFirstFiveItems() {
 
         const firstFiveItems = await collection.find().limit(5).toArray();
         console.log('First 5 Items:', firstFiveItems);
-        console.log(firstFiveItems[0])
+        return firstFiveItems;
     } catch (error) {
         console.error('Error retrieving items:', error);
     } finally {
         await client.close();
     }
 }
-
-// getFirstFiveItems();
 
 
 async function getItemsByCityName(cityName) {
@@ -35,14 +33,13 @@ async function getItemsByCityName(cityName) {
         const query = { "Section.County.City.Group.CityName" : cityName};
         const firstFiveItems = await collection.find(query).limit(5).toArray();
         console.log('First 5 Items with CityName', cityName, ': ', firstFiveItems);
+        return firstFiveItems;
     } catch (error) {
         console.error('Error retrieving items:', error);
     } finally {
         await client.close();
     }
 }
-
-// getItemsByCityName("Avenal");
 
 
 async function getItemsByZipCode(zip) {
@@ -55,6 +52,7 @@ async function getItemsByZipCode(zip) {
         const query = { "Section.County.City.ClinicDetails.Zip": zip};
         const firstFiveItems = await collection.find(query).limit(5).toArray();
         console.log('First 5 Items with Zip Code', zip, ': ', firstFiveItems);
+        return firstFiveItems;
     } catch (error) {
         console.error('Error retrieving items:', error);
     } finally {
@@ -62,5 +60,11 @@ async function getItemsByZipCode(zip) {
     }
 }
 
-getItemsByZipCode("93204");
+// getItemsByZipCode("93204");
+
+module.exports = {
+    getFirstFiveItems,
+    getItemsByCityName,
+    getItemsByZipCode
+};
 

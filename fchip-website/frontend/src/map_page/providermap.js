@@ -3,8 +3,8 @@ import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import ProviderCard from './providercard'; // Adjust the import path if needed
 import Home from './Home';
 
-const ProviderMap = () => {
-    const providers = [
+const ProviderMap = ({json_data}) => {
+    const defaultData = [
         {
             name: 'Dr. Sally Smith',
             distance: 0.2,
@@ -48,6 +48,8 @@ const ProviderMap = () => {
         },
     ];
 
+    const providers = json_data || defaultData
+    console.log("This is the json_data: ", json_data)
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
     const itemsPerPage = 3;
