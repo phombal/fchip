@@ -9,13 +9,16 @@ const ProviderMap = () => {
             name: 'Dr. Sally Smith',
             distance: 0.2,
             languages: 'English, Spanish',
-            specialty: 'Pediatrics'
+            specialty: 'Pediatrics',
+            address: '681 Omaha Ave, Clovis, CA 93619'
+
         },
         {
             name: 'Dr. John Robers',
             distance: 16,
             languages: 'Hmong, Spanish, English',
-            specialty: 'Cardiology'
+            specialty: 'Cardiology',
+            address: '525 El Camino Real, Menlo Park, CA 94025'
         },
         // Add more providers here
         {
@@ -40,16 +43,22 @@ const ProviderMap = () => {
             name: 'Dr. David Black',
             distance: 3.6,
             languages: 'Spanish',
-            specialty: 'Gastroenterology'
+            specialty: 'Gastroenterology',
+            address: '525 El Camino Real, Menlo Park, CA 94025'
         },
     ];
 
     const [currentPage, setCurrentPage] = useState(1);
+    const [destination, setDestination] = useState(null);
     const itemsPerPage = 3;
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
+    const onDirectionsFunc = (address) => {
+        setDestination(address)
+    }
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -67,12 +76,14 @@ const ProviderMap = () => {
                     <div id="provider-list">
                         {currentItems.map(provider => (
                             <ProviderCard
-                                key={provider.name}
-                                name={provider.name}
-                                distance={provider.distance}
-                                languages={provider.languages}
-                                specialty={provider.specialty}
-                            />
+                            key={provider.name}
+                            name={provider.name}
+                            distance={provider.distance}
+                            languages={provider.languages}
+                            specialty={provider.specialty}
+                            address={provider.address} // Pass the address
+                            onDirectionsClick={onDirectionsFunc}
+                        />
                         ))}
                     </div>
                     <Pagination>
@@ -88,7 +99,7 @@ const ProviderMap = () => {
                     </Pagination>
                 </Col>
                 <Col lg={8} md={6}>
-                    <Home />
+                    <Home destination={destination} setDestination={setDestination} />
                 </Col>
             </Row>
         </Container>

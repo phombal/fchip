@@ -1,20 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Dropdown, Container, Form} from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import GoogleMapComponent from './GoogleMapComponent';
 import { useTranslation } from 'react-i18next';
 import { LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 
-function Home() {
-  const [destination, setDestination] = useState(null);
-  const [currentLocation, setCurrentLocation] = useState({ lat: 37.7749, lng: -122.4194 }); // Default to San Francisco
+function Home({ destination, setDestination }) {
+  const [currentLocation, setCurrentLocation] = useState(null); // Default to null
   const [routeDetails, setRouteDetails] = useState(null);
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState(t('language.select'));
   const [modeOfTransport, setModeOfTransport] = useState('DRIVING');
   const searchBoxRef = useRef(null);
 
   useEffect(() => {
-    if (navigator.geolocation) {
+    if (navigator.geolocation && !currentLocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
           const pos = {
@@ -27,17 +25,19 @@ function Home() {
           alert("Error: The Geolocation service failed.");
         }
       );
-    } else {
-      // Browser doesn't support Geolocation
+    } else if (!navigator.geolocation) {
       alert("Error: Your browser doesn't support geolocation.");
     }
-  }, []);
+  }, [currentLocation]);
 
   const handlePlacesChanged = () => {
     const places = searchBoxRef.current.getPlaces();
     if (places && places.length > 0) {
-      const place = places[0].geometry.location;
-      setDestination(place);
+      const place = places[places.length - 1].geometry.location;
+      setCurrentLocation({
+        lat: place.lat(),
+        lng: place.lng()
+      });
     }
   };
 
@@ -52,27 +52,9 @@ function Home() {
     }
   };
 
-  // function TransportationDropDown() {
-  //   return (
-  //       <Dropdown id="modeOfTransport" onChange={e => setModeOfTransport(e.target.eventKey)}>
-  //           <Dropdown.Toggle variant="danger" id="dropdown-basic">
-  //               {t('mode.select')}
-  //           </Dropdown.Toggle>
-
-  //           <Dropdown.Menu>
-  //               <Dropdown.Item eventKey="DRIVING">{t('mode.driving')}</Dropdown.Item>
-  //               <Dropdown.Item eventKey="WALKING">{t('mode.walking')}</Dropdown.Item>
-  //               <Dropdown.Item eventKey="BICYCLING">{t('mode.bicycling')}</Dropdown.Item>
-  //               <Dropdown.Item eventKey="TRANSIT">{t('mode.transit')}</Dropdown.Item>
-  //           </Dropdown.Menu>
-  //       </Dropdown>
-  //   );
-  // }
-
   return (
     <div>
       <Container className="p-5">
-        {/* <TransportationDropDown /> */}
         <Form>
           <Form.Group controlId="modeOfTransport">
             <Form.Label>{t('mode.select')}:</Form.Label>
@@ -88,19 +70,20 @@ function Home() {
           googleMapsApiKey='AIzaSyDuBX2b6y-SpGeuj7KFSgBTrxBoJpV3VQA'
           libraries={["places"]}
         >
-        <label controlId="fullWidthTextInput" htmlFor="location-search">{t('text_input.my_loc')}:</label>
+          <label htmlFor="location-search">{t('text_input.my_loc')}:</label>
           <StandaloneSearchBox
             onLoad={ref => searchBoxRef.current = ref}
             onPlacesChanged={handlePlacesChanged}
           >
             <input
+              id="location-search"
               type="text"
               placeholder={t('text_input.ent_loc')}
               className="form-control mb-3"
             />
           </StandaloneSearchBox>
         </LoadScript>
-        <GoogleMapComponent origin={currentLocation} destination={destination} modeOfTransport={modeOfTransport} onDirectionsChanged={displayRouteDetails}/>
+        <GoogleMapComponent origin={currentLocation} destination={destination} modeOfTransport={modeOfTransport} onDirectionsChanged={displayRouteDetails} />
         {routeDetails && (
           <div>
             <p>Estimated travel time: {routeDetails.duration}</p>

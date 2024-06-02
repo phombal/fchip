@@ -25,6 +25,8 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
           console.error(`error fetching directions ${result}`);
         }
       });
+    } else {
+      setDirections(null);  // Clear directions when either origin or destination is missing
     }
   }, [origin, destination, modeOfTransport, onDirectionsChanged]);
 
@@ -35,8 +37,8 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={origin}
-        zoom={10}
+        center={origin || { lat: 0, lng: 0 }}
+        zoom={origin ? 10 : 2} // Adjust zoom level based on the availability of origin
         onLoad={map => setMap(map)}
       >
         {directions && <DirectionsRenderer directions={directions} />}
@@ -46,3 +48,4 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
 }
 
 export default GoogleMapComponent;
+
