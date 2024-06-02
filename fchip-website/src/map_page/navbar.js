@@ -8,13 +8,13 @@ function NavigationBar() {
   return (
     <Navbar bg="danger" variant="danger" expand="lg">
       <Container>
-        <Navbar.Brand href="#home" className="text-white">FCHIP</Navbar.Brand>
+        <Navbar.Brand href="https://fchip.org" target="_blank" rel="noopener noreferrer" className="text-white">FCHIP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/' className="text-white">{t('nav_bar.home')}</Nav.Link>
             <Nav.Link href="#pharmacy-search" className="text-white">{t('nav_bar.pharmacy')}</Nav.Link>
-            <Nav.Link href="#provider-search" className="text-white">{t('nav_bar.provider')}</Nav.Link>
+            <Nav.Link className="text-white">{t('nav_bar.provider')}</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

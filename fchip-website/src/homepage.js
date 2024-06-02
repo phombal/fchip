@@ -1,6 +1,7 @@
 import React from 'react';
 import doctorImage from './pictures/example-doctor.png'
 import styles from './homepage/homepage.module.css'
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
@@ -9,7 +10,7 @@ function HomePage() {
         <nav>
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <a href="#about">About Us</a>
@@ -34,7 +35,7 @@ function HomePage() {
         </p>
         <div className="button-container">
           <button className="custom-button">
-            Find healthcare providers near you
+          <Link to="/provider_search">Find healthcare providers near you</Link>
           </button>
           <button className="custom-button">Find pharmacies near you</button>
         </div>
