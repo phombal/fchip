@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 function NavigationBar() {
   const { t } = useTranslation(); // Hook to access translation function
@@ -11,7 +12,7 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className="text-white">{t('nav_bar.home')}</Nav.Link>
+            <Nav.Link as={Link} to='/' className="text-white">{t('nav_bar.home')}</Nav.Link>
             <Nav.Link href="#pharmacy-search" className="text-white">{t('nav_bar.pharmacy')}</Nav.Link>
             <Nav.Link href="#provider-search" className="text-white">{t('nav_bar.provider')}</Nav.Link>
           </Nav>

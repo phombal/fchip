@@ -1,0 +1,119 @@
+.homePage{
+  .App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #add8e6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+  }
+  
+  body {
+    background-color: #b3e4ff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-content {
+    text-align: left;
+    padding-left: 100px;
+    padding-top: 100px;
+  }
+  
+  .button-container {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column; /* Arrange buttons in a column */
+    gap: 10px; /* Add space between the buttons */
+    align-items: flex-start; /* Optional: align buttons to the left */
+    margin-top: 20px; /* Add space between the text and buttons */
+  }
+  
+  .custom-button {
+    background-color: #00abff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer; /* Optional: changes the cursor to a pointer when hovering over the button */
+    margin-top: 20px;
+    border-radius: 5px; /* Optional: adds rounded corners */
+  }
+  
+  .custom-button:hover {
+    background-color: darkblue; /* Optional: darken the button color on hover */
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%; /* Ensure it takes full width */
+    justify-content: space-between; /* Space items evenly */
+    /* background-color: blue; */
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: #00abff;
+    padding: 10px 20px; /* Adjust the padding as needed */
+    border: none;
+    border-radius: 5px; /* Optional: adds rounded corners */
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  
+  nav ul li a:hover {
+    color: gray;
+  }
+  
+  .search-bar {
+    width: calc(100% - 200px); /* Full width minus padding */
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin: 10px 20px 0 20px; /* Margin at the top to add space, adjust as needed */
+    font-size: 16px; /* Adjust font size as needed */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .image-container {
+    position: fixed;
+    bottom: 0px;
+    right: 100px;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+}
