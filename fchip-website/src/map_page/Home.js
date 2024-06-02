@@ -88,13 +88,14 @@ function Home() {
           googleMapsApiKey='AIzaSyDuBX2b6y-SpGeuj7KFSgBTrxBoJpV3VQA'
           libraries={["places"]}
         >
+        <label controlId="fullWidthTextInput" htmlFor="location-search">{t('text_input.my_loc')}:</label>
           <StandaloneSearchBox
             onLoad={ref => searchBoxRef.current = ref}
             onPlacesChanged={handlePlacesChanged}
           >
             <input
               type="text"
-              placeholder="Enter a location"
+              placeholder={t('text_input.ent_loc')}
               className="form-control mb-3"
             />
           </StandaloneSearchBox>

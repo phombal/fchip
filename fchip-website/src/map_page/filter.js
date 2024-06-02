@@ -79,9 +79,6 @@ function CombinedComponents() {
                     <LanguageFilterDropdown />
                 </Col>
                 <Col md={3} style={{ padding: '10px 0' }}>
-                    <FullWidthTextInput />
-                </Col>
-                <Col md={3} style={{ padding: '10px 0' }}>
                     <LanguageSelector />
                 </Col>
             </Row>
