@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dropdown, Container, Row, Col, Button } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
 function DistanceFilterDropdown() {
@@ -14,9 +14,8 @@ function DistanceFilterDropdown() {
     return (
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-            {distance ? distance : t('distance.select')}
+                {distance ? distance : t('distance.select')}
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
                 <Dropdown.Item eventKey="5 miles">5 miles</Dropdown.Item>
                 <Dropdown.Item eventKey="10 miles">10 miles</Dropdown.Item>
@@ -28,21 +27,14 @@ function DistanceFilterDropdown() {
     );
 }
 
-function LanguageFilterDropdown() {
-    const { t, i18n } = useTranslation();
-    const [language, setLanguage] = useState(t(''));
-  
-    const handleSelect = (eventKey) => {
-        setLanguage(eventKey);
-        console.log("Filtering items by language:", eventKey);
-    };
+function LanguageFilterDropdown({ selectedLanguage, onLanguageSelect }) {
+    const { t } = useTranslation();
 
     return (
-        <Dropdown onSelect={handleSelect}>
+        <Dropdown onSelect={onLanguageSelect}>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                {language ? language : t('language.select')}
+                {selectedLanguage ? selectedLanguage : t('language.select')}
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
                 <Dropdown.Item eventKey="English">{t('language.english')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Spanish">{t('language.spanish')}</Dropdown.Item>
@@ -54,4 +46,25 @@ function LanguageFilterDropdown() {
     );
 }
 
-export { DistanceFilterDropdown, LanguageFilterDropdown };
+function SpecialtyFilterDropdown({ selectedSpecialty, onSpecialtySelect }) {
+    const { t } = useTranslation();
+
+    return (
+        <Dropdown onSelect={onSpecialtySelect}>
+            <Dropdown.Toggle variant="danger" id="dropdown-basic">
+                {selectedSpecialty ? selectedSpecialty : t('specialty.select')}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                <Dropdown.Item eventKey="Primary Care Physician">{t('specialty.primarycarephysician')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Pediatrics">{t('specialty.pediatrics')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Cardiology">{t('specialty.cardiology')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Dermatology">{t('specialty.dermatology')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Orthopedics">{t('specialty.orthopedics')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Neurology">{t('specialty.neurology')}</Dropdown.Item>
+                <Dropdown.Item eventKey="Gastroenterology">{t('specialty.gastroenterology')}</Dropdown.Item>
+            </Dropdown.Menu>
+        </Dropdown>
+    );
+}
+
+export { DistanceFilterDropdown, LanguageFilterDropdown, SpecialtyFilterDropdown };
