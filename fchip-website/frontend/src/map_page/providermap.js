@@ -11,37 +11,49 @@ const ProviderMap = () => {
     const [resultArray, setResultArray] = useState([]);
 
     useEffect(() => {
-        // Fetch or set your providers array
-        // Example: setProviders([...]);
-
-        // Generate the result array inline
-        const newArray = [];
-
+        const resultSet = new Set();
+    
         providers.forEach(provider => {
             const groupValue = provider.Group;
-
-            if (typeof groupValue === 'object') {
-                // If groupValue is a dictionary
-                const specialities = groupValue.Specialities;
-                const physicianDetails = specialities && specialities.PhysicianDetails;
-                if (physicianDetails) {
-                    newArray.push(physicianDetails);
-                }
-            } else if (Array.isArray(groupValue)) {
+    
+            if (Array.isArray(groupValue)) {
                 // If groupValue is an array of dictionaries
                 groupValue.forEach(item => {
                     const specialities = item.Specialities;
                     const physicianDetails = specialities && specialities.PhysicianDetails;
                     if (physicianDetails) {
-                        newArray.push(physicianDetails);
+                        if (Array.isArray(physicianDetails)) {
+                            // If PhysicianDetails is an array, push each dictionary to newArray
+                            physicianDetails.forEach(detail => {
+                                resultSet.add(detail);
+                            });
+                        } else {
+                            // If PhysicianDetails is a single dictionary, push it to newArray
+                            resultSet.add(physicianDetails);
+                        }
                     }
                 });
+            } else {
+                // If groupValue is a dictionary
+                const specialities = groupValue.Specialities;
+                const physicianDetails = specialities && specialities.PhysicianDetails;
+                if (physicianDetails) {
+                    if (Array.isArray(physicianDetails)) {
+                        // If PhysicianDetails is an array, push each dictionary to newArray
+                        physicianDetails.forEach(detail => {
+                            resultSet.add(detail);
+                        });
+                    } else {
+                        // If PhysicianDetails is a single dictionary, push it to newArray
+                        resultSet.add(physicianDetails);
+                    }
+                }
             }
         });
-
-        setResultArray(newArray);
+        setResultArray(Array.from(resultSet));
     }, [providers]);
     
+
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
     const itemsPerPage = 3;
@@ -60,7 +72,7 @@ const ProviderMap = () => {
     console.log("CurrentItems = ", currentItems)
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(providers.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(resultArray.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
 
@@ -74,9 +86,9 @@ const ProviderMap = () => {
                             key={provider.Name}
                             name={provider.Name}
                             distance={provider.Name}
-                            languages={provider.Name}
-                            specialty={provider.Name}
-                            address={provider.Name} // Pass the address
+                            languages={provider.Languages}
+                            specialty={provider.Speciality}
+                            address={provider.Address} // Pass the address
                             onDirectionsClick={onDirectionsFunc}
                         />
                         ))}
