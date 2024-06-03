@@ -67,7 +67,7 @@ function Home({ destination, setDestination }) {
           </Form.Group>
         </Form>
         <LoadScript
-          googleMapsApiKey='AIzaSyDuBX2b6y-SpGeuj7KFSgBTrxBoJpV3VQA'
+          googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
           libraries={["places"]}
         >
           <label htmlFor="location-search">{t('text_input.my_loc')}:</label>

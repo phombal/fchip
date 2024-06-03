@@ -36,7 +36,6 @@ function LanguageFilterDropdown({ selectedLanguage, onLanguageSelect }) {
                 {selectedLanguage ? selectedLanguage : t('language.select')}
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                <Dropdown.Item eventKey="English">{t('language.english')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Spanish">{t('language.spanish')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Hmong">{t('language.hmong')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Punjabi">{t('language.punjabi')}</Dropdown.Item>
@@ -46,25 +45,4 @@ function LanguageFilterDropdown({ selectedLanguage, onLanguageSelect }) {
     );
 }
 
-function SpecialtyFilterDropdown({ selectedSpecialty, onSpecialtySelect }) {
-    const { t } = useTranslation();
-
-    return (
-        <Dropdown onSelect={onSpecialtySelect}>
-            <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                {selectedSpecialty ? selectedSpecialty : t('specialty.select')}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-                <Dropdown.Item eventKey="Primary Care Physician">{t('specialty.primarycarephysician')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Pediatrics">{t('specialty.pediatrics')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Cardiology">{t('specialty.cardiology')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Dermatology">{t('specialty.dermatology')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Orthopedics">{t('specialty.orthopedics')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Neurology">{t('specialty.neurology')}</Dropdown.Item>
-                <Dropdown.Item eventKey="Gastroenterology">{t('specialty.gastroenterology')}</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
-    );
-}
-
-export { DistanceFilterDropdown, LanguageFilterDropdown, SpecialtyFilterDropdown };
+export { DistanceFilterDropdown, LanguageFilterDropdown };

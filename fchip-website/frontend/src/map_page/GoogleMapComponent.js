@@ -32,7 +32,7 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
 
   return (
     <LoadScript
-      googleMapsApiKey='AIzaSyDuBX2b6y-SpGeuj7KFSgBTrxBoJpV3VQA'
+      googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
       libraries={["places"]}
     >
       <GoogleMap
