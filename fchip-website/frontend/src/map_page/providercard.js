@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 
-const ProviderCard = ({ name, distance, languages, specialty, address, onDirectionsClick }) => {
+const ProviderCard = ({ name, distance, languages, specialty, address, hours, onDirectionsClick }) => {
     const { t } = useTranslation(); // Hook to access translation function
     return (
         <Card style={{ marginBottom: '1rem' }}>
@@ -13,6 +13,7 @@ const ProviderCard = ({ name, distance, languages, specialty, address, onDirecti
                     <Card.Text>{distance} mi</Card.Text>
                     <Card.Text>{t('prov_card.languages')}: {languages}</Card.Text>
                     <Card.Text>{t('prov_card.specialty')}: {specialty}</Card.Text>
+                    <Card.Text>Hours: {hours}</Card.Text>
                     <Card.Text>Address: {address}</Card.Text> {/* Display the address */}
                 </div>
                 <Button variant="danger" onClick={() => onDirectionsClick(address)}>{"Get Directions"}</Button> {/* Pass the address to the handleDirectionsClick function */}

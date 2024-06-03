@@ -6,12 +6,13 @@ import provider_json from './fchip provider directory.json'
 
 const ProviderMap = () => {
     const providers = provider_json["Section"][1]["County"]["City"]
-    console.log("This is the providers: ", providers)
 
     const [resultArray, setResultArray] = useState([]);
 
+    // TO-DO: turn resultArray into an array of dictionaries containing only the info we will use to populate provider cards!
     useEffect(() => {
-        const resultSet = new Set();
+        const newArray = [];
+        const physIds = new Set();
     
         providers.forEach(provider => {
             const groupValue = provider.Group;
@@ -25,11 +26,19 @@ const ProviderMap = () => {
                         if (Array.isArray(physicianDetails)) {
                             // If PhysicianDetails is an array, push each dictionary to newArray
                             physicianDetails.forEach(detail => {
-                                resultSet.add(detail);
+                                const prev_len = physIds.size;
+                                physIds.add(detail.PhyId);
+                                if (prev_len != physIds.size) {
+                                    newArray.push(detail);
+                                }
                             });
                         } else {
                             // If PhysicianDetails is a single dictionary, push it to newArray
-                            resultSet.add(physicianDetails);
+                            const prev_len = physIds.size;
+                            physIds.add(physicianDetails.PhyId);
+                            if (prev_len != physIds.size) {
+                                newArray.push(physicianDetails);
+                            }
                         }
                     }
                 });
@@ -41,16 +50,25 @@ const ProviderMap = () => {
                     if (Array.isArray(physicianDetails)) {
                         // If PhysicianDetails is an array, push each dictionary to newArray
                         physicianDetails.forEach(detail => {
-                            resultSet.add(detail);
+                            const prev_len = physIds.size;
+                            physIds.add(detail.PhyId);
+                            if (prev_len != physIds.size) {
+                                newArray.push(detail);
+                            }
                         });
                     } else {
                         // If PhysicianDetails is a single dictionary, push it to newArray
-                        resultSet.add(physicianDetails);
+                        const prev_len = physIds.size;
+                        physIds.add(physicianDetails.PhyId);
+                        if (prev_len != physIds.size) {
+                            newArray.push(physicianDetails);
+                        }
+
                     }
                 }
             }
         });
-        setResultArray(Array.from(resultSet));
+        setResultArray(newArray);
     }, [providers]);
     
 
@@ -81,13 +99,14 @@ const ProviderMap = () => {
             <Row>
                 <Col lg={4} md={6}>
                     <div id="provider-list">
-                        {currentItems.map(provider => (
+                        {currentItems.map((provider, index) => (
                             <ProviderCard
-                            key={provider.Name}
+                            key={index}
                             name={provider.Name}
                             distance={provider.Name}
                             languages={provider.Languages}
                             specialty={provider.Speciality}
+                            hours={provider.Hours}
                             address={provider.Address} // Pass the address
                             onDirectionsClick={onDirectionsFunc}
                         />
