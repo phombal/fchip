@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Pagination } from 'react-bootstrap';
-import ProviderCard from './providercard'; // Adjust the import path if needed
+import {ProviderCard} from './providercard';// Adjust the import path if needed
 import Home from './Home';
 import provider_json from './fchip_provider_directory.json'
 
@@ -64,7 +64,7 @@ const ProviderMap = () => {
     console.log("CurrentItems = ", currentItems)
 
     const pageNumbers = [];
-    for (let i = 1; i <= Math.floor(resultArray.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(resultArray.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
 

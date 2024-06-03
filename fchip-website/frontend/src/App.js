@@ -4,7 +4,7 @@ import SubmitQuery from './map_page/submitQuery';
 import React, {useState, useEffect} from 'react';
 import NavigationBar from './map_page/navbar'; // Assuming NavigationBar is in the same directory
 import ProviderCard from './map_page/providercard';
-import ProviderMap from './map_page/clinicMap.js';
+import ProviderMap from './map_page/hospitalMap.js';
 import { Dropdown, Row, Col, Button } from 'react-bootstrap';
 import SearchSelector from './map_page/searchSelector.js';
 import { I18nextProvider } from 'react-i18next';
