@@ -9,8 +9,6 @@ function LanguageSelector() {
       i18n.changeLanguage(language);
     };
 
-    const language = i18n.language ? i18n.language.toUpperCase() : '';
-  
     return (
       <Dropdown onSelect={changeLanguage}>
         <Dropdown.Toggle variant="dark" id="dropdown-basic">

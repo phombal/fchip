@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, DirectionsRenderer } from '@react-google-maps/api';
+import { GoogleMap, DirectionsRenderer } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
   height: '400px'
 };
-
-const libraries=["places"];
-
 
 const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirectionsChanged }) => {
   const [map, setMap] = useState(null);
@@ -34,10 +31,6 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
   }, [origin, destination, modeOfTransport, onDirectionsChanged]);
 
   return (
-    <LoadScript
-      googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
-      libraries={libraries}
-    >
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={origin || { lat: 0, lng: 0 }}
@@ -46,7 +39,6 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
       >
         {directions && <DirectionsRenderer directions={directions} />}
       </GoogleMap>
-    </LoadScript>
   );
 }
 

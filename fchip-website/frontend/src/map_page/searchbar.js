@@ -7,7 +7,7 @@ const SearchBar = ({ searchTerm, onSearchChange }) => {
     };
 
     return (
-        <Form inline>
+        <Form inline="true">
             <FormControl
                 type="text"
                 placeholder="Search by name"

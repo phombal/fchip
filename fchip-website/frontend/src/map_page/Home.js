@@ -84,8 +84,9 @@ function Home({ destination, setDestination }) {
               className="form-control mb-3"
             />
           </StandaloneSearchBox>
-        </LoadScript>
+        
         <GoogleMapComponent origin={currentLocation} destination={destination} modeOfTransport={modeOfTransport} onDirectionsChanged={displayRouteDetails} />
+        </LoadScript>
         {routeDetails && (
           <div>
             <p>Estimated travel time: {routeDetails.duration}</p>

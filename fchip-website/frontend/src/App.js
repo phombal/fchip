@@ -14,12 +14,12 @@ import ClinicMap from './map_page/clinicMap.js';
 // import HospitalMap from './map_page/hospitalMap.js';
 
 function App() {
-  const [jsonData, setJsonData] = useState('');
+  // const [jsonData, setJsonData] = useState('');
   const [selectedMap, setSelectedMap] = useState('pcpMap');
 
-  useEffect(() => {
-    console.log("jsonData updated: ", jsonData);
-  }, [jsonData]);
+  // useEffect(() => {
+  //   console.log("jsonData updated: ", jsonData);
+  // }, [jsonData]);
 
 
   const renderSelectedMap = () => {

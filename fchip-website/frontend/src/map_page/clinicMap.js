@@ -19,10 +19,6 @@ const ClinicMap = () => {
     console.log("This is the providers: ", providers)
 
     useEffect(() => {
-        // Fetch or set your providers array
-        // Example: setProviders([...]);
-
-        // Generate the result array inline
         const newArray = [];
 
         providers.forEach(provider => {
