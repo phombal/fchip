@@ -13,7 +13,7 @@ import { DistanceFilterDropdown, LanguageFilterDropdown } from './map_page/dropd
 import i18n from './i18n'; // Import i18n configuration
 import MentalHealthMap from './map_page/mentalHealthMap.js';
 import ClinicMap from './map_page/clinicMap.js';
-import HospitalMap from './map_page/hospitalMap.js';
+// import HospitalMap from './map_page/hospitalMap.js';
 
 function App() {
   const [jsonData, setJsonData] = useState('');
@@ -32,6 +32,8 @@ function App() {
           return <ProviderMap index={3} />;
         case 'mhMap':
           return <MentalHealthMap />;
+        case 'clinicMap':
+          return <ClinicMap />;
         default:
           return <ProviderMap index={1} />
     }};
