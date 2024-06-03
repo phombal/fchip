@@ -4,6 +4,8 @@ import GoogleMapComponent from './GoogleMapComponent';
 import { useTranslation } from 'react-i18next';
 import { LoadScript, StandaloneSearchBox } from '@react-google-maps/api';
 
+const libraries=["places"];
+
 function Home({ destination, setDestination }) {
   const [currentLocation, setCurrentLocation] = useState(null); // Default to null
   const [routeDetails, setRouteDetails] = useState(null);
@@ -68,7 +70,7 @@ function Home({ destination, setDestination }) {
         </Form>
         <LoadScript
           googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
-          libraries={["places"]}
+          libraries={libraries}
         >
           <label htmlFor="location-search">{t('text_input.my_loc')}:</label>
           <StandaloneSearchBox

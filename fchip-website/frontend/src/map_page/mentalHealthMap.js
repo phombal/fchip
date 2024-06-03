@@ -3,7 +3,7 @@ import { Container, Row, Col, Pagination } from 'react-bootstrap';
 import {MHCard} from './providercard'; // Adjust the import path if needed
 import Home from './Home';
 import provider_json from './fchip_provider_directory.json'; // Adjust the import path if needed
-import { DistanceFilterDropdown, LanguageFilterDropdown } from './dropdowns';
+import {LanguageFilterDropdown } from './dropdowns';
 import SearchBar from './searchbar'; // Adjust the import path if needed
 import DistanceCalculator from './startingdestination';
 

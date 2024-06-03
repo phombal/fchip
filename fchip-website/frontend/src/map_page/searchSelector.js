@@ -2,13 +2,15 @@ import React, {useState} from 'react';
 import { Dropdown } from 'react-bootstrap';
 
 function SearchSelector({ selectedMap, onSelectMap }) {
-    const [selectedText, setSelectedText] = useState('Select an option');
+    const [selectedText, setSelectedText] = useState('Primary Care Physicians');
 
     const handleSelect = (eventKey, event) => {
         setSelectedText(event.target.textContent);
         onSelectMap(eventKey)
     };
     return (
+        <div>
+        <label htmlFor="dropdown-basic" style={{ marginRight: '10px' }}>What resource are you looking for?</label>
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="dark" id="dropdown-basic">
                 {selectedText}
@@ -24,6 +26,7 @@ function SearchSelector({ selectedMap, onSelectMap }) {
 
             </Dropdown.Menu>
         </Dropdown>
+        </div>
     );
 }
 

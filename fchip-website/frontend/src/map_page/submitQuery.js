@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Dropdown, Container, Row, Col, Button } from 'react-bootstrap';
-import { useTranslation } from 'react-i18next';
-import LanguageSelector from './languageSelector.js'
+import { Button } from 'react-bootstrap';
 import axios from 'axios';
-import { DistanceFilterDropdown, LanguageFilterDropdown } from './dropdowns.js'
 
 function SubmitQuery({onDataReceived}) {
     const [error, setError] = useState(null);

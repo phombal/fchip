@@ -13,8 +13,8 @@ function NavigationBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/' className="text-white">{t('nav_bar.home')}</Nav.Link>
-            <Nav.Link href="#pharmacy-search" className="text-white">{t('nav_bar.pharmacy')}</Nav.Link>
-            <Nav.Link className="text-white">{t('nav_bar.provider')}</Nav.Link>
+            {/* <Nav.Link href="#pharmacy-search" className="text-white">{t('nav_bar.pharmacy')}</Nav.Link>
+            <Nav.Link className="text-white">{t('nav_bar.provider')}</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

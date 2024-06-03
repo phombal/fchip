@@ -6,6 +6,9 @@ const containerStyle = {
   height: '400px'
 };
 
+const libraries=["places"];
+
+
 const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirectionsChanged }) => {
   const [map, setMap] = useState(null);
   const [directions, setDirections] = useState(null);
@@ -33,7 +36,7 @@ const GoogleMapComponent = ({ origin, destination, modeOfTransport, onDirections
   return (
     <LoadScript
       googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
-      libraries={["places"]}
+      libraries={libraries}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
