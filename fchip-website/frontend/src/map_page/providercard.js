@@ -11,7 +11,7 @@ const ProviderCard = ({ name, distance, languages, specialty, address, city, hou
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{distance} mi</Card.Text>
-                    <Card.Text>{t('prov_card.languages')}: {languages}</Card.Text>
+                    <Card.Text>{t('prov_card.languages')}: English{languages ? ", " + languages : languages}</Card.Text>
                     <Card.Text>{t('prov_card.specialty')}: {specialty}</Card.Text>
                     <Card.Text>Hours: {hours}</Card.Text>
                     <Card.Text>Address: {address}, {city}, CA</Card.Text> {/* Display the address */}

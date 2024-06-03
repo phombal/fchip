@@ -7,15 +7,16 @@ import { DistanceFilterDropdown, LanguageFilterDropdown } from './dropdowns';
 import SearchBar from './searchbar'; // Adjust the import path if needed
 import DistanceCalculator from './startingdestination';
 
-const ProviderMap = () => {
-    const providers = provider_json["Section"][1]["County"]["City"];
-
+const ProviderMap = ({index}) => {
     const [resultArray, setResultArray] = useState([]);
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [typedDoctor, setTypedDoctor] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
     const itemsPerPage = 10;
+
+    const providers = provider_json["Section"][index]["County"]["City"];
+
 
     useEffect(() => {
         const newArray = [];

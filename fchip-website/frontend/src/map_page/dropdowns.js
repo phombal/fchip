@@ -40,6 +40,8 @@ function LanguageFilterDropdown({ selectedLanguage, onLanguageSelect }) {
                 <Dropdown.Item eventKey="Hmong">{t('language.hmong')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Punjabi">{t('language.punjabi')}</Dropdown.Item>
                 <Dropdown.Item eventKey="Tagalog">{t('language.tagalog')}</Dropdown.Item>
+                <Dropdown.Item eventKey="English">{t('language.english')}</Dropdown.Item>
+
             </Dropdown.Menu>
         </Dropdown>
     );
