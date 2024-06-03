@@ -4,9 +4,7 @@ import ProviderCard from './providercard'; // Adjust the import path if needed
 import Home from './Home';
 import provider_json from './fchip provider directory.json'
 
-const ProviderMap = ({provider_json}) => {
-    const defaultData = [    
-    ];
+const ProviderMap = () => {
 
     const providers = provider_json
     console.log("This is the json_data: ", provider_json)
@@ -36,7 +34,7 @@ const ProviderMap = ({provider_json}) => {
             <Row>
                 <Col lg={4} md={6}>
                     <div id="provider-list">
-                        {currentItems.map(provider => (
+                        {provider_json.map(provider => (
                             <ProviderCard
                             key={provider.Section.County.City.ClinicDetails.Name}
                             name={provider.Section.County.City.ClinicDetails.Name}
