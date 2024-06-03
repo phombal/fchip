@@ -10,9 +10,10 @@ function SearchSelector({ selectedMap, onSelectMap }) {
 
             <Dropdown.Menu>
                 <Dropdown.Item eventKey="pcpMap">Primary Care Physicians</Dropdown.Item>
-                <Dropdown.Item eventKey="hospitalMap">Hospital Map</Dropdown.Item>
-                <Dropdown.Item eventKey="specialistMap">Specialist Map</Dropdown.Item>
-                <Dropdown.Item eventKey="obygnMap">ObyGn Map</Dropdown.Item>
+                <Dropdown.Item eventKey="hospitalMap">Hospitals</Dropdown.Item>
+                <Dropdown.Item eventKey="specialistMap">Specialists</Dropdown.Item>
+                <Dropdown.Item eventKey="obygnMap">ObyGns</Dropdown.Item>
+                <Dropdown.Item eventKey="mhMap">Mental Health Providers</Dropdown.Item>
 
             </Dropdown.Menu>
         </Dropdown>

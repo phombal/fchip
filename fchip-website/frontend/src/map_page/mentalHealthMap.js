@@ -1,71 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Pagination } from 'react-bootstrap';
-import {ProviderCard} from './providercard'; // Adjust the import path if needed
+import {MHCard} from './providercard'; // Adjust the import path if needed
 import Home from './Home';
 import provider_json from './fchip provider directory.json'; // Adjust the import path if needed
 import { DistanceFilterDropdown, LanguageFilterDropdown } from './dropdowns';
 import SearchBar from './searchbar'; // Adjust the import path if needed
 import DistanceCalculator from './startingdestination';
 
-const ProviderMap = ({index}) => {
+const MentalHealthMap = () => {
     const [resultArray, setResultArray] = useState([]);
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [typedDoctor, setTypedDoctor] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
-    const itemsPerPage = 10;
+    const itemsPerPage = 5;
 
-    const providers = provider_json["Section"][index]["County"]["City"];
-
-
+    const providers = provider_json["Section"][11]["County"]["City"];
+    console.log("mental health", providers)
+    
     useEffect(() => {
         const newArray = [];
         const physIds = new Set();
 
         providers.forEach(provider => {
-            const groupValue = provider.Group;
-
-            if (Array.isArray(groupValue)) {
-                groupValue.forEach(item => {
-                    const specialities = item.Specialities;
-                    const physicianDetails = specialities && specialities.PhysicianDetails;
-                    if (physicianDetails) {
-                        if (Array.isArray(physicianDetails)) {
-                            physicianDetails.forEach(detail => {
-                                const prev_len = physIds.size;
-                                physIds.add(detail.PhyId);
-                                if (prev_len !== physIds.size) {
-                                    newArray.push(detail);
-                                }
-                            });
-                        } else {
-                            const prev_len = physIds.size;
-                            physIds.add(physicianDetails.PhyId);
-                            if (prev_len !== physIds.size) {
-                                newArray.push(physicianDetails);
-                            }
-                        }
+            const physicianDetails = provider.PhysicianDetails;
+            if (Array.isArray(physicianDetails)) {
+                // If PhysicianDetails is an array, add each dictionary to resultArray
+                physicianDetails.forEach(detail => {
+                    const prev_len = physIds.size;
+                    physIds.add(detail.LicenseNumber);
+                    if (prev_len !== physIds.size) {
+                        newArray.push(detail);
                     }
                 });
             } else {
-                const specialities = groupValue.Specialities;
-                const physicianDetails = specialities && specialities.PhysicianDetails;
-                if (physicianDetails) {
-                    if (Array.isArray(physicianDetails)) {
-                        physicianDetails.forEach(detail => {
-                            const prev_len = physIds.size;
-                            physIds.add(detail.PhyId);
-                            if (prev_len !== physIds.size) {
-                                newArray.push(detail);
-                            }
-                        });
-                    } else {
-                        const prev_len = physIds.size;
-                        physIds.add(physicianDetails.PhyId);
-                        if (prev_len !== physIds.size) {
-                            newArray.push(physicianDetails);
-                        }
-                    }
+                const prev_len = physIds.size;
+                physIds.add(physicianDetails.LicenseNumber);
+                if (prev_len !== physIds.size) {
+                    newArray.push(physicianDetails);
                 }
             }
         });
@@ -101,6 +73,7 @@ const ProviderMap = ({index}) => {
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredByDoctor.slice(indexOfFirstItem, indexOfLastItem);
+    console.log("current = ", currentItems);
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(filteredByDoctor.length / itemsPerPage); i++) {
@@ -127,14 +100,19 @@ const ProviderMap = ({index}) => {
                 <Col md={5} style={{ padding: '10px 10px' }}>
                     <div id="provider-list">
                         {currentItems.map((provider, index) => (
-                            <ProviderCard
+                            <MHCard
                                 key={index}
                                 name={provider.Name}
+                                accepting={provider.PanelStatus}
                                 distance={provider.Distance}
-                                languages={provider.Languages}
-                                specialty={provider.Speciality}
-                                hours={provider.Hours}
-                                address={provider.Address}
+                                SUhours={provider.SiteHoursDay7}
+                                Mhours={provider.SiteHoursDay1}
+                                Thours={provider.SiteHoursDay2}
+                                Whours={provider.SiteHoursDay3}
+                                THhours={provider.SiteHoursDay4}
+                                Fhours={provider.SiteHoursDay5}
+                                SAhours={provider.SiteHoursDay6}
+                                address={provider.Address1}
                                 city={provider.CityName}
                                 onDirectionsClick={onDirectionsFunc}
                             />
@@ -161,4 +139,4 @@ const ProviderMap = ({index}) => {
     );
 };
 
-export default ProviderMap;
+export default MentalHealthMap;

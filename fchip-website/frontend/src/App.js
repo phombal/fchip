@@ -11,6 +11,7 @@ import { I18nextProvider } from 'react-i18next';
 import LanguageSelector from './map_page/languageSelector.js'
 import { DistanceFilterDropdown, LanguageFilterDropdown } from './map_page/dropdowns.js'
 import i18n from './i18n'; // Import i18n configuration
+import MentalHealthMap from './map_page/mentalHealthMap.js';
 
 function App() {
   const [jsonData, setJsonData] = useState('');
@@ -26,7 +27,9 @@ function App() {
         case 'pcpMap':
           return <ProviderMap index={1} />;
         case 'specialistMap':
-          return <ProviderMap index={3} />
+          return <ProviderMap index={3} />;
+        case 'mhMap':
+          return <MentalHealthMap />;
         default:
           return <ProviderMap index={1} />
     }};
