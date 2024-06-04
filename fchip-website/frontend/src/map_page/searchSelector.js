@@ -23,6 +23,7 @@ function SearchSelector({ selectedMap, onSelectMap }) {
                 <Dropdown.Item eventKey="obygnMap">ObyGns</Dropdown.Item>
                 <Dropdown.Item eventKey="mhMap">Mental Health Providers</Dropdown.Item>
                 <Dropdown.Item eventKey="clinicMap">Clinics</Dropdown.Item>
+                <Dropdown.Item eventKey="urgentcareMap">Urgent Care Facilities</Dropdown.Item>
 
             </Dropdown.Menu>
         </Dropdown>
