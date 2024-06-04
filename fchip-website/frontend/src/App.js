@@ -12,6 +12,7 @@ import i18n from './i18n'; // Import i18n configuration
 import MentalHealthMap from './map_page/mentalHealthMap.js';
 import ClinicMap from './map_page/clinicMap.js';
 import HospitalMap from './map_page/hospitalMap.js';
+import ObygnMap from './map_page/obygnMap.js';
 
 function App() {
   // const [jsonData, setJsonData] = useState('');
@@ -34,6 +35,8 @@ function App() {
           return <ClinicMap />;
         case 'hospitalMap':
           return <HospitalMap />;
+          case 'obygnMap':
+            return <ObygnMap />;
         default:
           return <ProviderMap index={1} />
     }};
