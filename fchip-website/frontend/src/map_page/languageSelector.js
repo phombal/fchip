@@ -11,7 +11,7 @@ function LanguageSelector() {
 
     return (
       <Dropdown onSelect={changeLanguage}>
-        <Dropdown.Toggle variant="dark" id="dropdown-basic">
+        <Dropdown.Toggle variant="danger" id="dropdown-basic">
           {i18n.language.toUpperCase()}
         </Dropdown.Toggle>
   

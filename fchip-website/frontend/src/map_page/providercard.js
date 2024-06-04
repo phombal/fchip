@@ -7,7 +7,7 @@ const ProviderCard = ({ name, distance, languages, specialty, address, city, hou
     return (
         <Card style={{ marginBottom: '1rem' }}>
             <Card.Body style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div>
+                {/* <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div> */}
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>Distance: {distance}</Card.Text>
@@ -27,7 +27,7 @@ const MHCard = ({ name, distance, accepting, address, city, Mhours, Thours, Whou
     return (
         <Card style={{ marginBottom: '1rem' }}>
             <Card.Body style={{ display: 'flex', alignItems: 'center' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div>
+                {/* <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div> */}
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>Distance: {distance}</Card.Text>

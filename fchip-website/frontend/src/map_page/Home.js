@@ -68,23 +68,11 @@ function Home({ destination, setDestination }) {
             </Form.Control>
           </Form.Group>
         </Form>
+        <br></br>
         <LoadScript
           googleMapsApiKey='AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ'
           libraries={libraries}
-        >
-          <label htmlFor="location-search">{t('text_input.my_loc')}:</label>
-          <StandaloneSearchBox
-            onLoad={ref => searchBoxRef.current = ref}
-            onPlacesChanged={handlePlacesChanged}
-          >
-            <input
-              id="location-search"
-              type="text"
-              placeholder={t('text_input.ent_loc')}
-              className="form-control mb-3"
-            />
-          </StandaloneSearchBox>
-        
+        >        
         <GoogleMapComponent origin={currentLocation} destination={destination} modeOfTransport={modeOfTransport} onDirectionsChanged={displayRouteDetails} />
         </LoadScript>
         {routeDetails && (

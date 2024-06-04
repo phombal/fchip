@@ -9,7 +9,7 @@ function SearchSelector({ selectedMap, onSelectMap }) {
         onSelectMap(eventKey)
     };
     return (
-        <div>
+        <div className='d-flex align-item-center justify-content-center'>
         <label htmlFor="dropdown-basic" style={{ marginRight: '10px' }}>What resource are you looking for?</label>
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="dark" id="dropdown-basic">

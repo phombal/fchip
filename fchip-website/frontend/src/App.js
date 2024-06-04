@@ -17,13 +17,7 @@ import UrgentcareMap from './map_page/urgentcareMap.js';
 import SkilledNursingMap from './map_page/skillednursingMap.js';
 
 function App() {
-  // const [jsonData, setJsonData] = useState('');
   const [selectedMap, setSelectedMap] = useState('pcpMap');
-
-  // useEffect(() => {
-  //   console.log("jsonData updated: ", jsonData);
-  // }, [jsonData]);
-
 
   const renderSelectedMap = () => {
     switch (selectedMap) {
@@ -48,27 +42,19 @@ function App() {
     }};
     
     return (
-    <div>
-      <NavigationBar />
-      <Container style={{ padding: '10px 0' }}>
-          <Row className="align-items-center">
-              {/* <Col md={3} style={{ padding: '10px 0' }}>
-                  <DistanceFilterDropdown />
-              </Col>
-              <Col md={3} style={{ padding: '10px 0' }}>
-                  <LanguageFilterDropdown />
-              </Col> */}
-              <Col md={3} style={{ padding: '10px 0' }}>
-                  <SearchSelector selectedMap={selectedMap} onSelectMap={setSelectedMap}/>
-              </Col>
-              <Col md={3} style={{ padding: '10px 0' }}>
-                  <LanguageSelector />
-              </Col>
-          </Row>
-      </Container>
-      {renderSelectedMap()}
-    </div>
-  );
-}
+      <div>
+        <NavigationBar />
+        <Container style={{ padding: '10px 0' }}>
+            <Row className="align-items-center">
+                <Col md={10} style={{ padding: '10px 0' }}>
+                    <SearchSelector selectedMap={selectedMap} onSelectMap={setSelectedMap}/>
+                </Col>
+            </Row>
+            <hr style={{ marginTop: '10px', borderTop: '2px solid #000', width: '100%' }} />
+        </Container>
+        {renderSelectedMap()}
+      </div>
+    );
+   }
 
 export default App;

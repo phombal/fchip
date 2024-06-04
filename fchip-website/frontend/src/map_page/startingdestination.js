@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle} from 'react';
 import { Button, Form } from 'react-bootstrap';
 
 const DistanceCalculator = ({ providerCards, onDistancesUpdate }) => {
@@ -43,12 +43,12 @@ const DistanceCalculator = ({ providerCards, onDistancesUpdate }) => {
         }
     )};
 
-    useEffect(() => {
-        // Call updateDistances whenever providerCards changes
-        if (providerCards && window.google && window.google.maps) {
-            updateDistances();
-        }
-    }, [providerCards]);
+    // useEffect(() => {
+    //     // Call updateDistances whenever providerCards changes
+    //     if (providerCards && window.google && window.google.maps) {
+    //         updateDistances();
+    //     }
+    // }, [providerCards]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -56,22 +56,19 @@ const DistanceCalculator = ({ providerCards, onDistancesUpdate }) => {
     };
 
     return (
-        <div>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="locationInput">
-                    <Form.Label>Enter Location:</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Location"
-                        value={location}
-                        onChange={handleLocationChange}
-                    />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Calculate Distance
-                </Button>
-            </Form>
-        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+        <Form onSubmit={handleSubmit} style={{ flex: 1, marginRight: '10px' }}>
+            <Form.Control
+                type="text"
+                placeholder="Enter Patient Home Location"
+                value={location}
+                onChange={handleLocationChange}
+            />
+        </Form>
+        <Button variant="danger" onClick={handleSubmit}>
+            Calculate Distances
+        </Button>
+    </div>
     );
 };
 
