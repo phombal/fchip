@@ -14,6 +14,7 @@ import ClinicMap from './map_page/clinicMap.js';
 import HospitalMap from './map_page/hospitalMap.js';
 import ObygnMap from './map_page/obygnMap.js';
 import UrgentcareMap from './map_page/urgentcareMap.js';
+import SkilledNursingMap from './map_page/skillednursingMap.js';
 
 function App() {
   // const [jsonData, setJsonData] = useState('');
@@ -40,6 +41,8 @@ function App() {
           return <ObygnMap />;
         case 'urgentcareMap':
           return <UrgentcareMap />;
+        case 'skillednursingMap':
+          return <SkilledNursingMap />;
         default:
           return <ProviderMap index={1} />
     }};

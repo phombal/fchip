@@ -24,6 +24,7 @@ function SearchSelector({ selectedMap, onSelectMap }) {
                 <Dropdown.Item eventKey="mhMap">Mental Health Providers</Dropdown.Item>
                 <Dropdown.Item eventKey="clinicMap">Clinics</Dropdown.Item>
                 <Dropdown.Item eventKey="urgentcareMap">Urgent Care Facilities</Dropdown.Item>
+                <Dropdown.Item eventKey="skillednursingMap">Skilled Nursing Facilities</Dropdown.Item>
 
             </Dropdown.Menu>
         </Dropdown>
