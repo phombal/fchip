@@ -14,10 +14,10 @@ const ClinicMap = () => {
     const [typedDoctor, setTypedDoctor] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
+    const [calculatedDistances, setCalculatedDistances] = useState(null);
     const itemsPerPage = 5;
     const providers = provider_json["Section"][0]["County"]["City"]
-    console.log("This is the providers: ", providers)
-
+    
     useEffect(() => {
         const newArray = [];
 
@@ -83,6 +83,11 @@ const ClinicMap = () => {
         pageNumbers.push(i);
     }
 
+    const handleDistancesUpdate = (distances) => {
+        setCalculatedDistances(distances);
+        // console.log("new distances dropped: ", distances);
+    };
+
         return (
             <Container fluid>
                             <Row>
@@ -95,9 +100,6 @@ const ClinicMap = () => {
             <Col md={2} style={{ padding: '10px 10px' }}>
                     <SearchBar onSearchChange={handleDoctorTyped} />
             </Col>
-            <Col md={2} style={{ padding: '10px 10px' }}>
-                    <DistanceCalculator/>
-            </Col>
             </Row>
                 <Row>
                     <Col lg={4} md={6}>
@@ -106,7 +108,7 @@ const ClinicMap = () => {
                                 <ProviderCard
                                 key={index}
                                 name={provider.Name}
-                                distance={provider.Distance}
+                                distance={calculatedDistances ? calculatedDistances[provider.Address + ", " + provider.CityName + ", CA"] : "N/A"}
                                 languages={provider.Languages}
                                 specialty={provider.ClinicType}
                                 hours={provider.Hours}
@@ -130,6 +132,7 @@ const ClinicMap = () => {
                     </Col>
                     <Col lg={8} md={6}>
                         <Home destination={destination} setDestination={setDestination} />
+                        <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
                     </Col>
                 </Row>
             </Container>

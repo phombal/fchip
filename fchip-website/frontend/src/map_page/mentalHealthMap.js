@@ -13,10 +13,12 @@ const MentalHealthMap = () => {
     const [typedDoctor, setTypedDoctor] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [destination, setDestination] = useState(null);
+    const [calculatedDistances, setCalculatedDistances] = useState(null);
+    
     const itemsPerPage = 5;
 
     const providers = provider_json["Section"][11]["County"]["City"];
-    console.log("mental health", providers)
+    // console.log("mental health", providers)
     
     useEffect(() => {
         const newArray = [];
@@ -80,6 +82,11 @@ const MentalHealthMap = () => {
         pageNumbers.push(i);
     }
 
+    const handleDistancesUpdate = (distances) => {
+        setCalculatedDistances(distances);
+        // console.log("new distances dropped: ", distances);
+    };
+
     return (
         <Container fluid>
             <Row>
@@ -92,9 +99,6 @@ const MentalHealthMap = () => {
             <Col md={2} style={{ padding: '10px 10px' }}>
                     <SearchBar onSearchChange={handleDoctorTyped} />
             </Col>
-            <Col md={2} style={{ padding: '10px 10px' }}>
-                    <DistanceCalculator/>
-            </Col>
             </Row>
             <Row>
                 <Col md={5} style={{ padding: '10px 10px' }}>
@@ -104,7 +108,7 @@ const MentalHealthMap = () => {
                                 key={index}
                                 name={provider.Name}
                                 accepting={provider.PanelStatus}
-                                distance={provider.Distance}
+                                distance={calculatedDistances ? calculatedDistances[provider.Address + ", " + provider.CityName + ", CA"] : "N/A"}
                                 SUhours={provider.SiteHoursDay7}
                                 Mhours={provider.SiteHoursDay1}
                                 Thours={provider.SiteHoursDay2}
@@ -132,7 +136,7 @@ const MentalHealthMap = () => {
                 </Col>
                 <Col lg={5}>
                     <Home destination={destination} setDestination={setDestination} />
-                    <DistanceCalculator providerCards={providers} />
+                    <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
                 </Col>
             </Row>
         </Container>

@@ -10,7 +10,7 @@ const ProviderCard = ({ name, distance, languages, specialty, address, city, hou
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div>
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>{distance} mi</Card.Text>
+                    <Card.Text>Distance: {distance}</Card.Text>
                     <Card.Text>{t('prov_card.languages')}: English{languages ? ", " + languages : languages}</Card.Text>
                     <Card.Text>{t('prov_card.specialty')}: {specialty}</Card.Text>
                     <Card.Text>Hours: {hours}</Card.Text>
@@ -30,7 +30,7 @@ const MHCard = ({ name, distance, accepting, address, city, Mhours, Thours, Whou
                 <div style={{ width: '64px', height: '64px', borderRadius: '50%', backgroundColor: '#ccc', marginRight: '1rem' }}></div>
                 <div style={{ flex: '1' }}>
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>{distance} mi</Card.Text>
+                    <Card.Text>Distance: {distance}</Card.Text>
                     <Card.Text>{accepting}</Card.Text>
                     <Card.Text>Monday hours: {Mhours}</Card.Text>
                     <Card.Text>Tuesday hours: {Thours}</Card.Text>

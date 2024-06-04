@@ -1,23 +1,24 @@
 const calculateDistance = async (origin, destination) => {
-    console.log(origin)
-    console.log(destination)
-    const apiKey = 'AIzaSyCvA_66tIjHiQzM3K6xw-McFXlP8p-LiSQ';
-    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${origin}&destinations=${destination}&key=${apiKey}`;
+    console.log("origin", origin);
+    console.log("destination", destination);
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        if (data.status === 'OK') {
-            const distanceText = data.rows[0].elements[0].distance.text;
-            const distanceValue = data.rows[0].elements[0].distance.value;
-            return { text: distanceText, value: distanceValue };
-        } else {
-            throw new Error(data.status);
-        }
-    } catch (error) {
-        console.error('Error calculating distance:', error);
-        return null;
-    }
+      const service = new window.google.maps.DistanceMatrixService();
+      const request = {
+        origins: [origin],
+        destinations: [destination],
+        travelMode: window.google.maps.TravelMode.DRIVING,
+        unitSystem: window.google.maps.UnitSystem.IMPERIAL,
+        avoidHighways: false,
+        avoidTolls: false,
+      };
+      const responseData = null;
+      // get distance matrix response
+      service.getDistanceMatrix(request).then((response) => {
+        // set response data
+        responseData = JSON.stringify(response, null, 2)["rows"][0]["elements"]["duration"]["text"];
+        console.log("response data:", response);
+      });
+    return responseData;
 };
 
 export default calculateDistance;
