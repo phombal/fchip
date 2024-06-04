@@ -15,6 +15,7 @@ import HospitalMap from './map_page/hospitalMap.js';
 import ObygnMap from './map_page/obygnMap.js';
 import UrgentcareMap from './map_page/urgentcareMap.js';
 import SkilledNursingMap from './map_page/skillednursingMap.js';
+import VisionMap from './map_page/visionMap.js';
 
 function App() {
   const [selectedMap, setSelectedMap] = useState('pcpMap');
@@ -37,6 +38,8 @@ function App() {
           return <UrgentcareMap />;
         case 'skillednursingMap':
           return <SkilledNursingMap />;
+        case 'visionMap':
+          return <VisionMap />;
         default:
           return <ProviderMap index={1} />
     }};
