@@ -6,6 +6,7 @@ import provider_json from './fchip_provider_directory.json'; // Adjust the impor
 import { LanguageFilterDropdown } from './dropdowns';
 import SearchBar from './searchbar'; // Adjust the import path if needed
 import DistanceCalculator from './startingdestination';
+import LanguageSelector from './languageSelector';
 
 const VisionMap = () => {
     const [resultArray, setResultArray] = useState([]);
@@ -103,17 +104,23 @@ const VisionMap = () => {
 
     return (
         <Container fluid>
-                        <Row>
-        <Col md={2} style={{ padding: '10px 10px' }}>
-                <LanguageFilterDropdown
-                    selectedLanguage={selectedLanguage}
-                    onLanguageSelect={handleLanguageSelect}
-                />
-        </Col>
-        <Col md={2} style={{ padding: '10px 10px' }}>
-                <SearchBar onSearchChange={handleDoctorTyped} />
-        </Col>
-        </Row>
+                       <Row>
+            <Col md={4} style={{padding: '10px 10px'}}>
+                <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
+            </Col>
+            <Col md={2} style={{ padding: '10px 10px' }}>
+                    <LanguageFilterDropdown
+                        selectedLanguage={selectedLanguage}
+                        onLanguageSelect={handleLanguageSelect}
+                    />
+            </Col>
+            <Col md={2} style={{ padding: '10px 10px' }}>
+                    <SearchBar onSearchChange={handleDoctorTyped} />
+            </Col>
+            <Col md={2} style={{ padding: '10px 10px' }}>
+                    <LanguageSelector />
+            </Col>
+            </Row>
             <Row>
                 <Col lg={4} md={6}>
                     <div id="provider-list">
@@ -145,8 +152,7 @@ const VisionMap = () => {
                 </Col>
                 <Col lg={8} md={6}>
                     <Home destination={destination} setDestination={setDestination} />
-                    <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
-                </Col>
+                    </Col>
             </Row>
         </Container>
     );

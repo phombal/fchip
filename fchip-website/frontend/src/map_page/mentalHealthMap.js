@@ -6,6 +6,7 @@ import provider_json from './fchip_provider_directory.json'; // Adjust the impor
 import {LanguageFilterDropdown } from './dropdowns';
 import SearchBar from './searchbar'; // Adjust the import path if needed
 import DistanceCalculator from './startingdestination';
+import LanguageSelector from './languageSelector';
 
 const MentalHealthMap = () => {
     const [resultArray, setResultArray] = useState([]);
@@ -90,6 +91,9 @@ const MentalHealthMap = () => {
     return (
         <Container fluid>
             <Row>
+            <Col md={4} style={{padding: '10px 10px'}}>
+                <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
+            </Col>
             <Col md={2} style={{ padding: '10px 10px' }}>
                     <LanguageFilterDropdown
                         selectedLanguage={selectedLanguage}
@@ -98,6 +102,9 @@ const MentalHealthMap = () => {
             </Col>
             <Col md={2} style={{ padding: '10px 10px' }}>
                     <SearchBar onSearchChange={handleDoctorTyped} />
+            </Col>
+            <Col md={2} style={{ padding: '10px 10px' }}>
+                    <LanguageSelector />
             </Col>
             </Row>
             <Row>
@@ -136,7 +143,6 @@ const MentalHealthMap = () => {
                 </Col>
                 <Col lg={5}>
                     <Home destination={destination} setDestination={setDestination} />
-                    <DistanceCalculator providerCards={currentItems} onDistancesUpdate={handleDistancesUpdate}/>
                 </Col>
             </Row>
         </Container>
